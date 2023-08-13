@@ -1,2 +1,7 @@
 .idea
+vendor
+dst_files
+logs
+go.sum
+data.db
 test

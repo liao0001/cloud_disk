@@ -1,0 +1,53 @@
+version: 0.1
+app_name: ""
+run_mode: ""
+log_dir: "./logs"
+
+# 网关设置
+http:
+  # 端口
+  port: 9900
+
+
+# 数据库 使用gorm进行连接，url配置参考文档: https://gorm.io/docs/connecting_to_the_database.html
+db:
+  # 数据库驱动
+  driver: sqlite
+  # 连接参数
+  url: "data.db"
+  # 连接池配置  默认10
+  idle_conn: 10
+  # 最大打开链接数  根据服务器性能和使用情况配置，默认20
+  open_conn: 20
+  # 链接保留时长 默认3600
+  max_lifetime: 3600
+
+# 存储介质
+storage:
+  # 缩略图
+  thumb:
+    # 是否启用
+    enable: false
+    # 图像宽度
+    width: 400
+    # 图像高度
+    height: 300
+    # ffmpeg的运行地址，如果应用程序已经加进了全局path，这里配置应用名称就可以
+    ffmpeg: "ffmpeg"
+  default_storage:
+    # 存储服务注册时候的名称，默认情况下不需要传
+    key: ""
+    # 存储驱动  当前支持: local  oss
+    driver: "local"
+    # 令牌账号  local模式下不需要配置
+    access_key_id: ""
+    # 令牌秘钥  local模式下不需要配置
+    access_key_secret: ""
+    # 返回的链接前缀
+    endpoint: "/files"
+    # 文件存储的本地地址
+    bucket: "dst_files"
+    # 是否启用鉴权
+    with_acl: false
+    # 令牌有效时间 单位:秒
+    expiration: 600
