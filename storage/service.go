@@ -3,12 +3,15 @@ package storage
 import "io"
 
 type Service struct {
-	conf    Config
-	storage IStorage
+	storageTyp string
+	conf       Config
+	storage    IStorage
 }
 
 func NewService(conf Config) (*Service, error) {
-	newFunc, err := FactoryGet(conf.DefaultStorage.Key)
+	storageTyp := conf.DefaultStorage.Driver
+
+	newFunc, err := FactoryGet(storageTyp)
 	if err != nil {
 		return nil, err
 	}
@@ -19,8 +22,9 @@ func NewService(conf Config) (*Service, error) {
 	}
 
 	return &Service{
-		conf:    conf,
-		storage: storage,
+		conf:       conf,
+		storage:    storage,
+		storageTyp: storageTyp,
 	}, nil
 }
 
@@ -33,4 +37,8 @@ func (s *Service) UploadFile(objName string, reader io.Reader) (string, error) {
 // 添加文件夹
 func (s *Service) CreateDir(objName string) error {
 	return s.storage.CreateDir(objName)
+}
+
+func (s *Service) GetStorageTyp() string {
+	return s.storageTyp
 }

@@ -34,12 +34,16 @@ type HttpRes struct {
 type simpleRes struct {
 	ctx       iris.Context
 	hasReturn bool
-	user      any // 用户信息
+	userId    string // 用户id
+	user      any    // 用户信息
 }
 
 func NewSimpleRes(ctx iris.Context) *simpleRes {
+	// uid, _ := ctx.Value("_user_id").(string)
+	uid := "test_001"
 	return &simpleRes{
-		ctx: ctx,
+		ctx:    ctx,
+		userId: uid,
 	}
 }
 

@@ -15,7 +15,7 @@ type Factory struct {
 
 func FactoryGet(driver string) (NewStorageFunc, error) {
 	if len(instanceFactory.newFuncMap) == 0 {
-		logrus.Fatalf("未注册任何存储服务\n")
+		logrus.Fatalf("未注册任何存储服务 \n")
 		return nil, ErrNoService
 	}
 	serv, ok := instanceFactory.newFuncMap[driver]

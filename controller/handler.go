@@ -6,6 +6,7 @@ import (
 	"github.com/kataras/iris/v12/core/router"
 	"github.com/liao0001/cloud_disk"
 	"github.com/liao0001/cloud_disk/config"
+	"github.com/liao0001/cloud_disk/service"
 )
 
 type Handler struct {
@@ -15,7 +16,7 @@ type Handler struct {
 	resWithUser func(ctx iris.Context) *simpleRes
 	needCaptcha bool // 是否需要验证码
 	manager     *cloud_disk.Manager
-	// service     *service.Service
+	service     *service.Service
 }
 
 func NewHandler(conf *config.Conf, app *iris.Application, manager *cloud_disk.Manager) {
@@ -24,6 +25,7 @@ func NewHandler(conf *config.Conf, app *iris.Application, manager *cloud_disk.Ma
 		app:     app,
 		res:     NewSimpleRes,
 		manager: manager,
+		service: service.NewService(manager),
 	}
 
 	// 访问静态页面
@@ -47,6 +49,8 @@ func NewHandler(conf *config.Conf, app *iris.Application, manager *cloud_disk.Ma
 	auth.Get("/test", func(ctx iris.Context) {
 		_ = ctx.JSON("ok")
 	})
+
+	auth.Post("/files/dir/create", a.FilesDirCreate)
 
 	// 此处为脚本更新占位//
 }

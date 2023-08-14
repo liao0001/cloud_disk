@@ -9,7 +9,7 @@ import (
 type Manager struct {
 	DB         *db.Engine
 	StorageMap *storage.Factory
-	Config     config.Conf
+	Config     *config.Conf
 }
 
 type ManagerOption func(manager *Manager)

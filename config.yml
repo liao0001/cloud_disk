@@ -1,7 +1,7 @@
 version: 0.1
 app_name: ""
 run_mode: ""
-log_dir: "./logs"
+#log_dir: "./logs/log"
 
 # 网关设置
 http:
@@ -36,7 +36,7 @@ storage:
     ffmpeg: "ffmpeg"
   default_storage:
     # 存储服务注册时候的名称，默认情况下不需要传
-    key: ""
+    key: "my_local"
     # 存储驱动  当前支持: local  oss
     driver: "local"
     # 令牌账号  local模式下不需要配置

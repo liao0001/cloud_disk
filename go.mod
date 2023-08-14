@@ -5,8 +5,10 @@ go 1.18
 require (
 	gitee.com/monkey0001/my_tools v0.0.0-20230407094502-6dcf52567ee6
 	github.com/fatih/structs v1.1.0
+	github.com/google/uuid v1.3.0
 	github.com/kataras/iris/v12 v12.2.1
 	github.com/pkg/errors v0.9.1
+	github.com/rs/cors v1.8.3
 	github.com/sirupsen/logrus v1.9.3
 	github.com/xuri/excelize/v2 v2.7.1
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1
@@ -29,7 +31,6 @@ require (
 	github.com/go-sql-driver/mysql v1.7.0 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/gomarkdown/markdown v0.0.0-20230716120725-531d2d74bc12 // indirect
-	github.com/google/uuid v1.3.0 // indirect
 	github.com/gorilla/css v1.0.0 // indirect
 	github.com/iris-contrib/schema v0.0.6 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
